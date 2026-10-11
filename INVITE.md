@@ -45,7 +45,7 @@ No app, no subscription, and nobody selling your data. The only thing you might 
 
 ## Setting it up
 
-This is for a Mac. Allow about an hour all up.
+This is for a Mac. You do the first four steps yourself, which takes about 15 minutes. Then the AI takes over and walks you through the rest.
 
 **1. Make a GitHub account.** Sign up at https://github.com/signup. It's free.
 
@@ -55,50 +55,45 @@ This is for a Mac. Allow about an hour all up.
 brew install git gh node
 ```
 
-**3. Log in to GitHub from the terminal.**
+**3. Download the project.** Log in to GitHub (pick GitHub.com, then HTTPS, then "Login with a web browser"), then download:
 
 ```bash
 gh auth login
 ```
 
-Pick GitHub.com, then HTTPS, then "Login with a web browser", and follow the prompts.
-
-**4. Download the project.**
-
 ```bash
-mkdir -p ~/Projects
-cd ~/Projects
-gh repo clone OWNER/REPO finance-tracker
-cd finance-tracker
-scripts/setup-local.sh
+mkdir -p ~/Projects && cd ~/Projects && gh repo clone OWNER/REPO finance-tracker && cd finance-tracker
 ```
 
-The last line creates your own private settings files and switches on the check that stops personal info getting into git.
+**4. Open an AI in the folder.** Use whichever you have:
 
-Optional: if you'd like your own copy on GitHub (handy for backups), make it **private**:
+- Claude Code (what I use): install it from https://claude.com/claude-code, then run `claude` in the folder.
+- ChatGPT's Codex: run `npm install -g @openai/codex`, then `codex` in the folder, and sign in with your ChatGPT account.
 
-```bash
-git remote rename origin upstream
-gh repo create my-finance-tracker --private --source . --push
-```
+**5. Say "get me started".** From here the AI drives:
 
-Later, `git pull upstream main` gets any updates I make.
+- It checks which steps you've done (`python3 scripts/doctor.py`).
+- It runs the terminal commands for you.
+- It walks you through the browser bits one at a time: connecting Google, getting your Akahu tokens, the first sync.
+- If you stop halfway, say "where am I up to?" next time and it picks up from there.
 
-**5. Follow the README.** README.md in the folder walks through the rest, step by step: making the Google Sheet, getting your Akahu tokens and the first sync. You'll need a free Akahu account (https://my.akahu.nz) with your banks connected.
+**6. Say "set up my dashboard".** Once your banks are syncing, this:
 
-**6. Hand the boring bits to an AI.** Open an assistant in the folder and ask it things: help with setup, sorting transactions, setting goals, or a monthly "what should I cut" review.
+- splits your income by source
+- sorts your bills, subscriptions and spending
+- sets your goals, each with a base and a stretch target
+- builds a budget
+- turns on the Friday email
 
-ChatGPT / Codex:
+It takes 30 to 60 minutes, once.
 
-```bash
-npm install -g @openai/codex
-cd ~/Projects/finance-tracker
-codex
-```
+**7. Then once a month, say "run my monthly review".** You get your ranked list of what to cut, and whether last month's changes worked.
 
-Sign in with your ChatGPT account. Then start with: "Read README.md, CLAUDE.md and the skill files in .claude/skills/, then walk me through setup one step at a time." Once your banks are syncing, ask it to "follow .claude/skills/finance-setup/SKILL.md to set up my dashboard". Those files were written for Claude, but Codex follows them fine. Run `ln -s CLAUDE.md AGENTS.md` in the folder and Codex picks them up by itself.
+## Making it yours
 
-Claude Code (what I use): install it from https://claude.com/claude-code and open the folder. It picks up the instructions and the review skill on its own, so you can say "help me set this up". Once your banks are syncing, say "set up my dashboard": it splits your income by source, sorts your bills and spending, and sets goals with a base and a stretch target. After that, "run my monthly review" once a month.
+Just ask. "Make the Friday email meaner." "Send it on Sundays." "Add a tab for my car costs." "Stop suggesting I cut coffee." It's your own copy of the code, so anything can change. Your settings live in files that never get overwritten when you pull updates from me. Ask the AI how to pull updates, or to set up a private backup of your copy on GitHub.
+
+The README has every step written out, if you'd rather do it by hand or want to see what the AI is doing.
 
 A few things to know:
 

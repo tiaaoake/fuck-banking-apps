@@ -19,7 +19,11 @@ Sharing it with a friend? [INVITE.md](INVITE.md) is a ready-to-send email: what 
 
 ## Setup
 
-About 30 minutes, once.
+The easy way: clone this repo, open Claude Code or Codex in the folder, and say **"get me started"**. The AI checks where you're up to, runs the terminal steps for you, and talks you through the browser ones. Then say "set up my dashboard". [INVITE.md](INVITE.md) has the short version, from a fresh Mac.
+
+`python3 scripts/doctor.py` shows which steps are done and what's next, any time.
+
+The steps below are what the AI does, written out in full. They take about 30 minutes, once.
 
 ### 1. Get the code
 
@@ -111,7 +115,7 @@ Open Claude Code in this folder. The skills read the sheet with `python3 scripts
 
 To have Claude edit Targets, Holdings, Notes and Transfers To Do for you, also connect the Google Sheets (or Google Drive) connector in Claude with the same Google account.
 
-With Codex or another assistant, open it in this folder and ask it to read `CLAUDE.md` and the skill files in `.claude/skills/` first. Without a Sheets connector it gives you rows to paste instead.
+Codex and other assistants pick up `AGENTS.md`, which points them at the same instructions and skills. Without a Sheets connector they give you rows to paste instead.
 
 ### 9. Build out your dashboard
 
@@ -252,6 +256,8 @@ How the numbers are counted:
 - Income is anything in a category starting with "Income" (e.g. `Income: freelance`), plus uncategorised money in. Add Categories rules for your payers.
 
 ## Making changes
+
+Customise anything: it's your copy. Personal settings go in the sheet and the `my-*` files, so updates never overwrite them. Changes to how it looks or works (the email, tabs, the Dashboard) go in `apps-script/finance-sync.gs`, and changes to how the AI coaches go in `.claude/skills/`. Ask the AI ("make the Friday email meaner", "add a tab for car costs") and it follows the getting-started skill's notes on where each change belongs.
 
 - Edit code here, then `cd apps-script && clasp push`. If you edited in the browser, `clasp pull` first.
 - Run `node tests/finance-sync.test.js` after changing the script.
