@@ -1,0 +1,27 @@
+# Google login for clasp. Never commit.
+.clasprc.json
+# Your script ID. Keep local.
+apps-script/.clasp.json
+# Your own files: rules, savings actions, preferences. Each has a .example that is committed instead.
+# clasp still pushes the .gs ones, and scripts/check-private.py blocks them if forced in.
+apps-script/my-*.gs
+.claude/skills/personal-finance-review/my-preferences.md
+.private-words
+
+# Never commit money data
+*.csv
+*.xlsx
+*.xls
+*.ofx
+*.qif
+exports/
+
+.env
+node_modules/
+.DS_Store
+
+# Local copy of the sheet read by scripts/read-sheet.mjs. Money data, never commit.
+.cache/
+
+# Downloaded statements and bills (personal)
+temp/

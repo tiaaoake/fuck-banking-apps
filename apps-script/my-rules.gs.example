@@ -1,0 +1,77 @@
+/**
+ * Your categorisation rules, kept in code so Claude can add them without editing the sheet. Copy this file to
+ * my-rules.gs (scripts/setup-local.sh does it). my-rules.gs is gitignored: it names people and places you pay.
+ * Same columns as the Categories tab: Match text, My category, Group, Only account, Only money (in / out).
+ * Rules on the Categories tab come first, so anything set there overrides these. First match wins, so keep
+ * specific rules above broad ones, and the "*" catch-alls last.
+ *
+ * The rules below are a starting point: common merchants and the category layout this tracker was built around.
+ * Replace the placeholder names (your name, employer, landlord) with your own, and delete what you don't use.
+ */
+const MY_RULES = [
+  ['', 'Health & self-care', 'Everyday', '', ''],   // a row with no match text just sets the category's group
+
+  // Money moving to yourself isn't spending
+  ['sent money to your name', 'Transfer', '', '', ''],
+
+  // Income: one category per payer, all starting "Income"
+  ['employer name', 'Income: Job', '', '', 'in'],
+
+  // Bills
+  ['landlord name', 'Rent', 'Bills', '', 'out'],
+  ['office landlord', 'Office rent', 'Bills', '', 'out'],
+
+  // Trips
+  ['airbnb', 'Trips', 'One-off', '', ''],
+  ['nzski', 'Trips', '', '', ''],
+  ['esim', 'Trips', '', '', ''],
+
+  // Subscriptions, in their own group (above the USD catch-all, which would call USD ones Trips)
+  ['anthropic', 'AI & software', 'Subscriptions', '', 'out'],
+  ['openai', 'AI & software', 'Subscriptions', '', 'out'],
+  ['chatgpt', 'AI & software', 'Subscriptions', '', 'out'],
+  ['cursor', 'AI & software', 'Subscriptions', '', 'out'],
+  ['notion', 'AI & software', 'Subscriptions', '', 'out'],
+  ['figma', 'Design & creative', 'Subscriptions', '', 'out'],
+  ['canva', 'Design & creative', 'Subscriptions', '', 'out'],
+  ['adobe', 'Design & creative', 'Subscriptions', '', 'out'],
+  ['netflix', 'Streaming', 'Subscriptions', '', 'out'],
+  ['spotify', 'Streaming', 'Subscriptions', '', 'out'],
+  ['linkedin', 'Other subscriptions', 'Subscriptions', '', 'out'],
+  ['google workspace', 'Other subscriptions', 'Subscriptions', '', 'out'],
+  ['one membership', 'Other subscriptions', 'Subscriptions', '', 'out'],   // Uber One
+  ['', 'Software', 'Subscriptions', '', ''],   // Akahu's business software that no rule above catches
+
+  // Places Akahu can't label
+  ['corner pub', 'Eating out', '', '', 'out'],
+
+  // Catch-alls, last: a foreign-currency balance only used when travelling
+  ['*', 'Trips', '', 'usd balance', 'out']
+];
+
+/**
+ * Edits to rows on the Categories tab, applied on the next Recategorise or Sync: [match text, current category,
+ * new category]. An edit only changes a row whose match text and category are exactly these.
+ */
+const MY_RULE_EDITS = [];
+
+/** Single transactions with their own category: [Transaction ID, category], e.g. a loan that looks like a gift. */
+const MY_TRANSACTION_CATEGORIES = [];
+
+/** Categories merged into one: [from, to]. Applies to rules and Akahu's own labels, on the next Recategorise or Sync. */
+const MY_CATEGORY_MERGES = [
+  ['Personal care', 'Health & self-care'],
+  ['Health', 'Health & self-care']
+];
+
+/**
+ * Digital subscriptions you have (software and apps), listed so the Dashboard shows them under Subscriptions as soon
+ * as they charge, including new and yearly ones. Match text as in rules.
+ */
+const MY_SUBSCRIPTIONS = ['netflix', 'spotify', 'apple.com'];
+
+/**
+ * Services you use regularly but pay for per visit or in packs, so they don't bill on a schedule. Each is shown under
+ * Recurring services with its average per month: [match text (| for alternatives), name to show, category].
+ */
+const MY_SERVICES = [['gym name', 'Gym (casual visits)', 'Fitness']];

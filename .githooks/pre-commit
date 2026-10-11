@@ -1,0 +1,3 @@
+#!/bin/sh
+# Blocks commits that include personal data. Turned on by scripts/setup-local.sh (git config core.hooksPath .githooks).
+exec python3 scripts/check-private.py --staged

@@ -1,0 +1,11 @@
+# Protected spending
+
+Things you value and don't want Claude to suggest cutting. Copy to my-preferences.md (gitignored).
+
+- Example: travel. Actions on trips aim for the same travel for less, never less travel.
+
+# Subscription decisions
+
+One line per subscription, kept up by the review. Verdict is Keep, Cancel or Deciding (with a decide-by date).
+
+- Example streaming: Keep. Reviewed 2026-01-15. Watched weekly.

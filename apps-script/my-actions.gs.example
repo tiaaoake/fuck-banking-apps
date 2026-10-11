@@ -1,0 +1,14 @@
+/**
+ * Savings actions Claude works out from your data. The real file, my-actions.gs, holds your amounts, so it stays out
+ * of git; copy this to my-actions.gs. clasp pushes it; `clasp pull` restores it.
+ *
+ * Columns: Rank, Action, Merchant or category, Est. monthly saving, Effort, Evidence, Added, Due, Status,
+ * Actual saving, Notes, Track, Baseline / mo, Target / mo.
+ */
+const MY_ACTIONS = [
+  [1, 'Cancel the streaming service you no longer watch', 'Entertainment', 20, 'Low',
+   'Charged every month; nothing watched lately', new Date(2026, 0, 1), '', 'Suggested', '', '', 'streaming', 20, 0]
+];
+
+/** Rows already on the tab to rename before syncing, so your Status carries over: [old Action text, new]. */
+const MY_ACTION_RENAMES = [];

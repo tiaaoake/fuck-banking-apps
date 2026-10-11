@@ -1,0 +1,3 @@
+#!/bin/sh
+# Blocks commit messages with personal data or dollar amounts.
+exec python3 scripts/check-private.py --message "$1"

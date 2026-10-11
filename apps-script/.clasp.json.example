@@ -1,0 +1,5 @@
+{
+  "scriptId": "PASTE_YOUR_SCRIPT_ID_HERE",
+  "parentId": "PASTE_YOUR_SHEET_ID_HERE",
+  "rootDir": "."
+}
