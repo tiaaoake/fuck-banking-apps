@@ -105,17 +105,30 @@ In the editor, run `installAutoRefresh` once. Every morning around 7am the sheet
 - `installWeeklyTrigger` syncs on Mondays only, if you'd rather not have the daily refresh.
 - `removeTriggers` stops both.
 
-### 8. Make it yours
+### 8. Connect an AI
 
-1. Open **Uncategorised**, pick a My category for the top rows, then Finance > Recategorise and refresh. Each pick becomes a rule.
-2. Edit `apps-script/my-rules.gs`. It ships with the category layout this was built around (Bills, Everyday, Subscriptions, Lifestyle, One-off, Other) and common merchants. Swap the placeholders (your name for transfers to yourself, your employer, your landlord) for your own, then `cd apps-script && clasp push`.
-3. Add your goals on **Targets** (or ask Claude to; see below), and anything that doesn't sync (an overseas bank, shares, crypto, money you're owed) on **Holdings**.
-
-### 9. Connect Claude (optional)
-
-Open Claude Code in this folder. The skill reads the sheet with `python3 scripts/read-sheet.py`, which uses your clasp login, so there's nothing more to connect.
+Open Claude Code in this folder. The skills read the sheet with `python3 scripts/read-sheet.py`, which uses your clasp login, so there's nothing more to connect.
 
 To have Claude edit Targets, Holdings, Notes and Transfers To Do for you, also connect the Google Sheets (or Google Drive) connector in Claude with the same Google account.
+
+With Codex or another assistant, open it in this folder and ask it to read `CLAUDE.md` and the skill files in `.claude/skills/` first. Without a Sheets connector it gives you rows to paste instead.
+
+### 9. Build out your dashboard
+
+Say "set up my dashboard". The setup task (`.claude/skills/finance-setup/`) takes 30 to 60 minutes and walks you through, one step at a time:
+
+1. Checking the data arrived, and giving each account a job. It also adds anything that doesn't sync to Holdings.
+2. Splitting income by source (job, side income, refunds, money paid back), so each source gets its own row.
+3. Bills, subscriptions and regular services.
+4. Clearing Uncategorised down to a few percent of spending.
+5. Your baseline: income, spending and surplus over the last 3 months.
+6. Savings goals, each with a base level (what you can afford now) and a stretch level (what's possible if spending comes down).
+7. A monthly budget, savings first, with spending limits.
+8. The daily refresh, the Friday email, and weekly and monthly reminders.
+
+It finishes with a walk through the Dashboard, and offers your first monthly review.
+
+To do it by hand instead: pick categories on **Uncategorised**, then use Finance > Recategorise and refresh. Next, edit `apps-script/my-rules.gs`: it ships with the category layout this was built around (Bills, Everyday, Subscriptions, Lifestyle, One-off, Other) and common merchants. Swap the placeholders for your own, then `cd apps-script && clasp push`. Finally, add goals on **Targets** and anything that doesn't sync on **Holdings**.
 
 ## Your settings: where they live
 
@@ -148,7 +161,7 @@ For AI agents: `.claude/settings.json` runs `scripts/agent-guard.py` before ever
 
 ## Using it
 
-Open Claude Code in this folder and say "what should I cut?" for a ranked list of savings actions, or "run my monthly review" for the full review. First time, it helps set up targets. Also: "mid-month check-in", "update my targets", "where's my money going?".
+Open Claude Code in this folder and say "what should I cut?" for a ranked list of savings actions, or "run my monthly review" for the full review. First time, say "set up my dashboard" (see Setup, step 9). Also: "mid-month check-in", "update my targets", "where's my money going?".
 
 ### How you use it
 

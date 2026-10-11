@@ -96,9 +96,9 @@ cd ~/Projects/finance-tracker
 codex
 ```
 
-Sign in with your ChatGPT account. Then start with: "Read README.md, CLAUDE.md and .claude/skills/personal-finance-review/SKILL.md, then walk me through setup one step at a time." Those files were written for Claude, but Codex follows them fine. Run `ln -s CLAUDE.md AGENTS.md` in the folder and Codex picks them up by itself.
+Sign in with your ChatGPT account. Then start with: "Read README.md, CLAUDE.md and the skill files in .claude/skills/, then walk me through setup one step at a time." Once your banks are syncing, ask it to "follow .claude/skills/finance-setup/SKILL.md to set up my dashboard". Those files were written for Claude, but Codex follows them fine. Run `ln -s CLAUDE.md AGENTS.md` in the folder and Codex picks them up by itself.
 
-Claude Code (what I use): install it from https://claude.com/claude-code and open the folder. It picks up the instructions and the review skill on its own, so you can say "help me set this up", or once it's running, "run my monthly review".
+Claude Code (what I use): install it from https://claude.com/claude-code and open the folder. It picks up the instructions and the review skill on its own, so you can say "help me set this up". Once your banks are syncing, say "set up my dashboard": it splits your income by source, sorts your bills and spending, and sets goals with a base and a stretch target. After that, "run my monthly review" once a month.
 
 A few things to know:
 

@@ -51,6 +51,8 @@ When suggesting Categories rows, use the columns Match text, My category, Group,
 
 ## 2. First run: set up targets
 
+If the sheet looks freshly set up (most money in or out is uncategorised, accounts have no goals, Targets is empty), suggest the full setup first: the finance-setup skill (`.claude/skills/finance-setup/SKILL.md`). It covers income sources, rules and budget as well as targets. If the user only wants targets, carry on here.
+
 If the Targets tab is empty or only holds the rows marked "Example", help the user set targets before a full review, one at a time:
 
 1. Ask what they want their money to do over the next year or so. Let them talk; don't hand them a list.
