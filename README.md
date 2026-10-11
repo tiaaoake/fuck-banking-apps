@@ -21,8 +21,10 @@ About 30 minutes, once.
 
 ### 1. Get the code
 
+Copy the clone URL from the green Code button on this repo's GitHub page, then:
+
 ```bash
-git clone https://github.com/OWNER/REPO.git finance-tracker
+git clone <clone URL> finance-tracker
 cd finance-tracker
 scripts/setup-local.sh
 ```
