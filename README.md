@@ -7,6 +7,8 @@ A Google Sheet that fills itself from your NZ bank accounts (via [Akahu](https:/
 
 The script only reads from your bank. It can't make payments or transfers. Your tokens live in Apps Script's Script properties, never in this repo.
 
+Sharing it with a friend? [INVITE.md](INVITE.md) is a ready-to-send email: what it is, how their data is handled, and setup from a fresh Mac.
+
 ## What you need
 
 - A Google account (the sheet and script live in your Drive).
