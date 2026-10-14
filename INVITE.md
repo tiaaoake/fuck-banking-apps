@@ -82,7 +82,7 @@ mkdir -p ~/Projects && cd ~/Projects && gh repo clone OWNER/REPO finance-tracker
 - splits your income by source
 - sorts your bills, subscriptions and spending
 - sets your goals, each with a base and a stretch target
-- builds a budget
+- builds a budget, and a payday plan: which account does what, and what to move where each time you're paid
 - turns on the Friday email
 
 It takes 30 to 60 minutes, once.

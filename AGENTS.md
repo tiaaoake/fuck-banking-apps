@@ -8,6 +8,7 @@ The workflows live as skills in `.claude/skills/`. Claude Code loads them by its
 | --- | --- |
 | "get me started", "help me set this up", "where am I up to?", or asks how to customise or update | `.claude/skills/getting-started/SKILL.md` |
 | "set up my dashboard", or the banks are syncing but nothing is categorised and there are no goals | `.claude/skills/finance-setup/SKILL.md` |
+| "sort my pay", "what do I do when I get paid?", "set up my accounts", or the budget step of dashboard setup | `.claude/skills/pay-plan/SKILL.md` |
 | "what should I cut?", "run my monthly review", "how am I doing?", anything about goals and spending | `.claude/skills/personal-finance-review/SKILL.md` |
 
 `python3 scripts/doctor.py` shows which setup steps are done. Without a Google Sheets connector, give sheet changes as tab-separated rows for the user to paste.

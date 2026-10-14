@@ -150,6 +150,9 @@ def dashboard(tabs, tx):
                  for r in targets), 'a stretch goal set', 'finance-setup step 7')
     check(s, 'monthly savings' in kinds and 'spending limit' in kinds, 'monthly budget set (savings and spending limits)',
           'finance-setup step 8')
+    prefs = path('.claude/skills/personal-finance-review/my-preferences.md')
+    check(s, os.path.exists(prefs) and '# pay plan' in open(prefs).read().lower(), 'pay plan made (what moves where each payday)',
+          'say "sort my pay"')
     actions = [r for r in tabs.get('Savings actions', [])[1:] if r and len(r) > 1 and r[1]]
     check(s, actions, 'first monthly review done', 'say "run my monthly review"')
 

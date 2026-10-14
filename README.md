@@ -127,7 +127,7 @@ Say "set up my dashboard". The setup task (`.claude/skills/finance-setup/`) take
 4. Clearing Uncategorised down to a few percent of spending.
 5. Your baseline: income, spending and surplus over the last 3 months.
 6. Savings goals, each with a base level (what you can afford now) and a stretch level (what's possible if spending comes down).
-7. A monthly budget, savings first, with spending limits.
+7. A monthly budget, savings first, with spending limits, and a pay plan: which account does which job, what moves where each payday, and automatic payments to do it for you. To redo just that part later, say "sort my pay".
 8. The daily refresh, the Friday email, and weekly and monthly reminders.
 
 It finishes with a walk through the Dashboard, and offers your first monthly review.

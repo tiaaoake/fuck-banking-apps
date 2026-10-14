@@ -1973,7 +1973,7 @@ function buildToDo_(ss, d, tz) {
   sh.getRange('A1').setValue(TODO_TAB).setFontSize(18).setFontWeight('bold');
   let row = 3;
   const inv = d.invoice;
-  sh.getRange(row, 1).setValue('Money in ' + (inv ? inv.account : 'Invoices') + ': what to move').setFontSize(12).setFontWeight('bold');
+  sh.getRange(row, 1).setValue('Money in ' + (inv ? inv.account : 'your pay account') + ': what to move').setFontSize(12).setFontWeight('bold');
   if (inv && inv.empty) {
     sh.getRange(row + 1, 2).setValue(inv.account + ' is empty: all $' + Math.round(inv.amount).toLocaleString('en-NZ') +
       ' from the ' + Utilities.formatDate(new Date(inv.date), tz, 'd MMM yyyy') + ' payment has been moved. Where it went:').setFontColor('#15803d');
@@ -1986,7 +1986,7 @@ function buildToDo_(ss, d, tz) {
     }
     row += 5 + inv.lines.length;
   } else if (!inv) {
-    sh.getRange(row + 1, 2).setValue('No invoice paid in the last 60 days. Set a budget and Set-aside rates on Targets (ask Claude) and the next one shows here.')
+    sh.getRange(row + 1, 2).setValue('No pay over $500 in the last 60 days, or no budget yet. Ask your AI to "sort my pay": it sets up your budget, goals and accounts, and your next pay shows here.')
       .setFontColor(grey);
     row += 3;
   } else {
@@ -2029,11 +2029,11 @@ function buildToDo_(ss, d, tz) {
   // The routine around it.
   const weekly = (d.targets.find(t => /\(weekly\)$/.test(String(t.name))) || {}).aim;
   const steps = [
-    ['When an invoice is paid', 'Nothing to do: it waits in Invoices and funds next month. (Optional: move the GST and tax lines now.)'],
-    ['The 1st of the month', 'Finance > Payday: what to move. It syncs and works out the split of everything in Invoices. Make each transfer in your banking app, in order: GST, tax, bills, spending, savings, then what\'s left over to / Savings, so Invoices ends at $0. Run Payday again: each line turns Done. Then ask Claude for the monthly review.'],
-    ['Every Monday (automatic)', weekly ? 'An automatic payment moves $' + Math.round(weekly) + ' from Monthly to Everyday. Spend only from Everyday; if it runs low, that is the week\'s signal.'
-                                        : 'An automatic payment moves your weekly spending money to Everyday. Spend only from Everyday.'],
-    ['Anything new', 'A purchase, a trip, a goal or a question for your accountant: tell Claude, and it goes on Targets or Notes.']
+    ['Payday', 'Finance > Payday: what to move. It syncs and lists the transfers out of the account your pay lands in, in order: tax (if you set it aside), bills, spending, savings, then what\'s left over to savings, so that account ends near $0. Make each one in your banking app; run Payday again and each line turns Done. Once the amounts are steady, set them up as automatic payments for the day after payday instead.'],
+    ['Every week', weekly ? 'Your weekly spending money ($' + Math.round(weekly) + ') goes to your everyday account, ideally by automatic payment. Spend only from that account; if it runs low, that is the week\'s signal.'
+                          : 'If you give yourself a weekly spending amount, an automatic payment moves it to your everyday account. Spend only from that account.'],
+    ['Once a month', 'Ask your AI to run the monthly review: what to cut, and whether last month\'s changes worked.'],
+    ['Anything new', 'A purchase, a trip, a goal or a question for your accountant: tell your AI, and it goes on Targets or Notes.']
   ];
   sh.getRange(row, 1).setValue('Your routine').setFontSize(12).setFontWeight('bold');
   sh.getRange(row + 1, 2, steps.length, 2).setValues(steps.map(x => [x[0], x[1]]));

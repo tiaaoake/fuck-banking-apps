@@ -93,6 +93,8 @@ Ask what they want their money to do over the next year or two. Let them talk fi
 3. Set Paid from on each limit if the user has separate bills and spending accounts. The Forecast's Payday plan then shows what to move where each payday.
 4. Check that the limits plus bills fit inside the spending budget. The Dashboard shows any part of the budget not yet given to a category.
 
+Then sort out payday: follow the pay-plan skill (`.claude/skills/pay-plan/SKILL.md`). It agrees which account does which job, what moves where each payday and in what order, sets Paid from and Share of savings to match, and helps the user set up automatic payments in their bank. Don't skip it: it's what turns the budget into something that happens every payday.
+
 ## 9. Refresh, email and reminders
 
 1. Daily refresh: ask the user to run `installAutoRefresh` once in the Apps Script editor. The sheet then syncs every morning around 7am, and emails them on Fridays.

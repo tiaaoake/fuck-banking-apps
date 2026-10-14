@@ -71,6 +71,8 @@ Write the finished rows to Targets with the Google Sheets connector (columns: Na
 
 ## 3. Accountability first
 
+If `my-preferences.md` has a "# Pay plan", check last month against it: did each payday's transfers happen (Transfers To Do, or transfers in Transactions), and do the amounts still fit? If pay, bills or goals have changed, suggest updating the plan with the pay-plan skill. If there's no Pay plan and the user has a budget, offer to make one.
+
 Read the Open rows in Actions. Open by asking whether they got done, starting with the top-ranked one. Keep it short and non-judgemental. If one didn't happen, ask what got in the way, and whether it's still the right action.
 
 For each Committed action, read Last month and Progress on the Savings actions tab: did spending reach the Target? Give the actual monthly saving (Baseline minus Last month) against the estimate. Be straight about misses: name the number, ask what got in the way, and whether the target needs changing or the action needs replacing. Suggest Done (with the actual saving) once a one-off action is complete, or Dropped if the user no longer wants it. Point out Suggested actions still worth committing to. Report the running total of savings achieved from Done actions; it's the clearest sign the reviews are paying off.
